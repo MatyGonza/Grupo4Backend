@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DATABASE_CONFIG = {
-    'user': os.getenv('DB_USERNAME'),
+    'user': os.getenv('DB_USARNAME'),
     'password': os.getenv('DB_PASSWORD'),
     'host': os.getenv('DB_HOST'),
     'database': os.getenv('DB_NAME'),
