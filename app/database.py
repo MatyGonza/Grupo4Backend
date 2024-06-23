@@ -7,11 +7,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DATABASE_CONFIG = {
-    'user': os.getenv('DB_USARNAME'),
-    'password': os.getenv('DB_PASSWORD'),
-    'host': os.getenv('DB_HOST'),
-    'database': os.getenv('DB_NAME'),
-    'port': os.getenv('DB_PORT', 3306)  # puerto predeterminado es 3306 si no se especifica
+    
+    'user': os.getenv('DB_USARNAME', 'root'),
+    'password': os.getenv('DB_PASSWORD', ' '),
+    'host': os.getenv('DB_HOST', 'localhost'),
+    'database': os.getenv('DB_NAME', 'topalmacen'),
+    'port': os.getenv('DB_PORT', '3306')  # puerto predeterminado es 3306 si no se especifica
 }
 
 # Función para obtener la conexión a la base de datos
