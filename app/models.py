@@ -29,17 +29,19 @@ class Productos:
 
         productos = [Productos(id_producto=row[0], nombre=row[1], tipo=row[2], precio=row[3], imagen=row[4]) for row in rows]
 
-        # movies = []
-        # for row in rows:
-        #     new_movie = Movie(id_movie=row[0], title=row[1], director=row[2], release_date=row[3], banner=row[4])
-        #     movies.append(new_movie)
-
         cursor.close()
         return productos
         
-
-    def get_by_id(id_movie):
-        pass
+    @staticmethod
+    def get_by_id(id_producto):
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM productos WHERE id = %s", (id_producto))
+        row = cursor.fetchone()
+        cursor.close()
+        if row:
+            return Productos(id_producto=row[0], nombre=row[1], tipo=row[2],precio=row[3], imagen=row[4])
+        return None
 
     def save():
         pass

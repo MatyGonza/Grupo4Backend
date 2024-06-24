@@ -11,5 +11,7 @@ app.route('/',methods=['GET'])(index)
 
 app.route('/api/productos',methods=['GET'])(get_all_productos)
 
+app.route('/api/movies/<int:id_producto>', methods=['GET'])(get_producto)
+
 if __name__=='__main__':
     app.run(debug=True)
