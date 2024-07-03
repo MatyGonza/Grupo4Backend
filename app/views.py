@@ -30,8 +30,22 @@ def create_producto():
     return jsonify({'message':'Producto creado con exito'}), 201
     
 
-def update_producto():
-    pass
+def update_producto(id):
+    producto = Producto.get_by_id(id)
+    if not producto:
+        return jsonify({'message': 'Movie not found'}), 404
+    data = request.json
+    producto.nombre = data['nombre']
+    producto.tipo = data['tipo']
+    producto.precio = data['precio']
+    producto.imagen = data['imagen']
+    producto.save()
+    return jsonify({'message': 'Producto updated successfully'})
 
-def delete_producto():
-    pass
+
+def delete_producto(id):
+    producto = Producto.get_by_id(id)
+    if not producto:
+        return jsonify({'message': 'Movie not found'}), 404
+    producto.delete()
+    return jsonify({'message': 'Movie deleted successfully'})

@@ -37,7 +37,7 @@ class Producto:
     def get_by_id(id):
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM productos WHERE id = %s", (id))
+        cursor.execute("SELECT * FROM productos WHERE id = %s", (id,))
         row = cursor.fetchone()
         cursor.close()
         if row:
@@ -60,5 +60,10 @@ class Producto:
         db.commit()
         cursor.close()
 
-    def delete():
-        pass
+    def delete(self):
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("DELETE FROM productos WHERE id = %s", (self.id,))
+        db.commit()
+        cursor.close()
+
